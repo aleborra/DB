@@ -1,5 +1,5 @@
 Trovare nome, cognome e numero di telefono dei proprietari di appartamenti a Sanremo con la piscina
-/*select NOME, COGNOME, TELEFONO from PROPRIETARI, RESIDENZE where (RESIDENZE.CITTA='SANREMO' and RESIDENZE.PISCINA='TRUE' and proprietari.codice_proprietario=residenze.codice_proprietario)*/
+/*select nome, cognome, telefono from proprietari, residenze where (residenze.citta='SANREMO' and RESIDENZE.PISCINA='TRUE' and proprietari.codice_proprietario=residenze.codice_proprietario)*/
 
 Trovare il numero totale di posti letto a Imperia
 /*select sum(POSTI_LETTO) as "posti letto" from RESIDENZE where RESIDENZE.CITTA='IMPERIA'*/
@@ -11,7 +11,7 @@ Trovare il proprietario dell’appartamento con la tariffa massima
 /*select NOME, COGNOME FROM PROPRIETARI, RESIDENZE where TARIFFA_SETTIMANALE=(select max(TARIFFA_SETTIMANALE) from RESIDENZE) and proprietari.codice_proprietario=residenze.codice_proprietario*/
 
 Contare gli appartamenti con vista mare per ciascuna località
-/*select CITTA, count(CODICE_RESIDENZA) as "Appartamenti con vista mare" from RESIDENZE where PISCINA='TRUE' group by CITTA*/
+/*select CITTA, count(CODICE_RESIDENZA) as "Appartamenti con vista mare" from RESIDENZE where vista_mare='TRUE' group by CITTA*/
 
 Trovare il guadagno settimanale di ciascun proprietario
 /*select sum(tariffa_settimanale) as Guadagno from residenze, proprietari where proprietari.codproprietario=residenze.codice_proprietario 
