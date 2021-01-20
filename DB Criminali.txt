@@ -25,3 +25,29 @@
    and criminale.codice=incriminazioni.codcriminale 
    and incriminazioni.codcrimine=crimines.codice
 
+9) select criminale.cognome,criminale.nome 
+   from criminale,collaborazioni,banda 
+   where collaborazioni.banda2 = 'I casalesi' 
+   and collaborazioni.banda1 = banda.nome 
+   and banda.codcapo=criminale.codice
+
+   corr//select criminale.cognome,criminale.nome 
+   from criminale,collaborazioni,banda 
+   where (collaborazioni.banda1='Ndrangheta' and banda.nome=collaborazioni.banda2 
+   or collaborazioni.banda2='Ndrangheta' and banda.nome=collaborazioni.banda1)
+   and banda.codcapo=criminale.codice
+
+10) select criminale.cognome,criminale.nome 
+   from criminale,vittime,persone,incriminazioni 
+   where persone.cognome='Cordì' 
+   and persone.codfiscale=vittime.codpersona 
+   and vittime.codcrimine=incriminazioni.codcrimine 
+   and incriminazioni.codcriminale=criminale.codice
+
+11) select count(vittime.codcrimine) from vittime,crimines 
+   where crimines.luogo='Locri' 
+   and crimines.codice=vittime.codcrimine
+
+12) select count(incriminazioni.codcrimine) 
+   from incriminazioni,criminale where criminale.nomebanda='Ndrangheta' 
+   and criminale.codice=incriminazioni.codcriminale
