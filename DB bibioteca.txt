@@ -1,0 +1,57 @@
+1)  select autori.nome,autori.cognome from autori 
+    where autori.luogo_nascita_autore='Verona'
+
+2)  select libro.ISBN,libro.titolo 
+    from libro where libro.editore='Bianchi' and libro.scaffale='B'
+
+3)  select utenti.nome,utenti.cognome from utenti 
+    where utenti.data_di_nascita=(select max(utenti.data_di_nascita) 
+    from utenti)
+
+4)  select libro.titolo from libro where libro.anno<'1900'
+
+5)  select libro.titolo from libro,autori,scritto_da 
+    where autori.cognome='Zolfrini' 
+    and autori.id_autore=scritto_da.codautoresd 
+    and libro.codlibro=scritto_da.codlibrosd
+
+6)  select libro.titolo from libro,autori,scritto_da 
+    where autori.luogo_nascita_autore='Lione' 
+    and autori.id_autore=scritto_da.codautoresd 
+    and libro.codlibro=scritto_da.codlibrosd
+
+7)  select distinct utenti.nome,utenti.cognome,utenti.telefono 
+    from utenti,prestitos where prestitos.data_restituzione is null 
+    and prestitos.id_utente_prestiti=utenti.id_utente
+
+8)  select distinct libro.titolo from libro,utenti,prestiti 
+    where utenti.data_di_nascita>'01-JAN-1960' 
+    and utenti.id_utente=prestiti.id_utente_prestiti
+    and prestiti.id_libro_prestiti=libro.codlibro
+
+9)  select utenti.nome,utenti.cognome from utenti,prestitos,libro 
+    where libro.titolo='Le chiavi del potere' 
+    and prestitos.id_libro_prestiti=libro.codlibro 
+    and prestitos.id_utente_prestiti=utenti.id_utente
+
+10) select distinct autori.nome,autori.cognome 
+    from autori,libro,scritto_da where libro.anno>='1830' 
+    and libro.editore='Rossi' 
+    and libro.codlibro=scritto_da.codlibrosd 
+    and scritto_da.codautoresd=autori.id_autore 
+
+11) select utenti.cognome,utenti.nome,count(*) as nlibri 
+    from prestiti,utenti where prestiti.id_utente_prestiti=utenti.id_utente 
+    group by nome,cognome order by nlibri,cognome
+
+12) select editore from 
+    (select editore,count(*) as nlibri from libro 
+    group by editore order by nlibri desc) where rownum=1
+
+13) select distinct titolo from libro 
+    where codlibro not in (select id_libro_prestiti from prestiti)
+
+14) select titolo from libro,scritto_da where codlibro=codlibrosd 
+    and scritto_da.anno=(select max(anno) from scritto_da)
+
+
