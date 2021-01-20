@@ -1,0 +1,27 @@
+1) select criminale.cognome,criminale.nome from criminale,banda 
+   where banda.codcapo=criminale.codice
+
+2) select criminale.cognome,criminale.nome from criminale 
+   where criminale.nomebanda='Sacra Corona Unita'
+
+3) select collaborazioni.banda1 from collaborazioni where 
+   collaborazioni.banda2='I casalesi'
+
+4) select crimines.luogo from crimines,incriminazioni where 
+   incriminazioni.anno='1978' and incriminazioni.codcrimine=crimines.codice
+
+5) select crimines.luogo,crimines.data from crimines,criminale 
+   where criminale.cognome='Fortunato' and crimines.codice='4'
+
+6) select persone.cognome,persone.nome from persone,vittime,crimines 
+   where crimines.luogo='Palmi' and crimines.codice=vittime.codcrimine
+   and vittime.codpersona=persone.codfiscale
+
+7) select count(crimines.codice) as nCrimini from crimines 
+   where crimines.luogo='Rosarno' and crimines.data='1949'
+
+8) select crimines.luogo,crimines.data from crimines,incriminazioni,
+   criminale where criminale.cognome='Liggio' 
+   and criminale.codice=incriminazioni.codcriminale 
+   and incriminazioni.codcrimine=crimines.codice
+
