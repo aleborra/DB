@@ -13,7 +13,7 @@ create table album (codice integer not null,
     				primary key (codice),
     				foreign key (codice_gruppo) references gruppo(codice))      /*2° metodo*/
 
-create table artistam (codice integer not null,
+create table artista (codice integer not null,
     				  nome varchar2(100) not null,
 					  nazionalità varchar2(40) not null,
    					  anno_nascita integer not null,
@@ -22,5 +22,25 @@ create table artistam (codice integer not null,
 					  codice_gruppo integer not null,
 					  primary key (codice),
 					  foreign key (codice_gruppo) references gruppo(codice))
+
+
+create table concerto (codice integer not null,
+					   luogo varchar2(100) not null,
+					   nome varchar2(100) not null,
+					   data_concerto date not null,
+					   primary key (codice))
+
+create table partecipazione (codice_concerto integer not null,
+				 codice_gruppo integer not null,
+				 num_canzoni integer not null,
+				 primary key (codice_concerto,codice_gruppo),
+				 foreign key (codice_concerto) references concerto(codice),
+				 foreign key (codice_gruppo) references gruppo(codice))
+
+
+create table canzone (titolo varchar2(200) not null,
+			  codice_cantante integer not null,
+			  primary key (titolo),
+			  foreign key (codice_cantante) references artista(codice))
 
 
