@@ -1,0 +1,26 @@
+/*creare tabelle e primary key*/
+
+create table gruppo (codice number(5,0) not null, 
+    				 nome varchar2(100) not null,
+    				 anno_fondazione number(4,0) not null)
+
+alter table gruppo add primary key(codice)         /*1° metodo*/
+
+create table album (codice integer not null,
+    				titolo varchar2(100) not null,
+    				anno integer not null,
+    				codice_gruppo integer not null,
+    				primary key (codice),
+    				foreign key (codice_gruppo) references gruppo(codice))      /*2° metodo*/
+
+create table artistam (codice integer not null,
+    				  nome varchar2(100) not null,
+					  nazionalità varchar2(40) not null,
+   					  anno_nascita integer not null,
+					  tipo varchar2(20) not null,
+					  strumento varchar(40),
+					  codice_gruppo integer not null,
+					  primary key (codice),
+					  foreign key (codice_gruppo) references gruppo(codice))
+
+
