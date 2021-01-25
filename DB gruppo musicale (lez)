@@ -48,7 +48,8 @@ insert into artista(codice,nome,nazionalità,anno_nascita,tipo,codice_gruppo)
 values(123,'Mick Jagger','Britannica','1945','Cantante',2)   /*se non si vogliono occupare tutti i campi*/
 
 
-
+insert into artista(codice,nome,nazionalità,anno_nascita,tipo,codice_gruppo)
+select id_autore,nome || '' || cognome,'statunitense',1970,'Cantante',1 from autori     /*da una select*/
 
 
 
