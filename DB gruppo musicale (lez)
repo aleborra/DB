@@ -60,3 +60,23 @@ insert into concerto values(33,'Torino','Pellerina','24-JUN-2018',0)
 
 update gruppo set nome='Sting' where codice=1
 
+insert into partecipazione values(11,1,12)
+
+select concerto.* from concerto,gruppo,partecipazione where gruppo.nome='Sting' and concerto.codice=partecipazione.codice_concerto and partecipazione.codice_gruppo=gruppo.codice
+
+update concerto set prezzo=35 where 
+codice=(select concerto.codice from concerto,gruppo,partecipazione 
+where gruppo.nome='Sting' and concerto.codice=partecipazione.codice_concerto and partecipazione.codice_gruppo=gruppo.codice)
+
+
+
+
+
+
+
+
+
+
+
+
+
