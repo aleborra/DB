@@ -69,7 +69,8 @@ codice=(select concerto.codice from concerto,gruppo,partecipazione
 where gruppo.nome='Sting' and concerto.codice=partecipazione.codice_concerto and partecipazione.codice_gruppo=gruppo.codice)
 
 
-
+update concerto set prezzo=prezzo*1.1 where 
+codice=(select concerto.codice from concerto,gruppo,partecipazione where gruppo.nome='Sting' and concerto.codice=partecipazione.codice_concerto and partecipazione.codice_gruppo=gruppo.codice)
 
 
 
