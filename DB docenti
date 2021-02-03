@@ -223,10 +223,14 @@ update dati_amministrativi set anni_servizio=anni_servizio+1;
 
 select cognome,nome from docenti where nome like 'MARIA%'
 
-update dati_amministrativi set incarico_aggiuntivo='Primo collaboratore' and stipendio=stipendio+100 
-where id in (select id from docenti,dati_amministrativi where cognome='AMATO'                                /*ha degli errori*/
+update dati_amministrativi set incarico_aggiuntivo='Primo collaboratore' 
+where dati_amministrativi.id in (select docenti.id from docenti,dati_amministrativi where cognome='AMATO')
+update dati_amministrativi set stipendio=stipendio+100 where dati_amministrativi.id in (select docenti.id from docenti,dati_amministrativi where cognome='AMATO')
 
 update dati_amministrativi set incarico_aggiuntivo='Corso di  recupero di fisica' where id in (select id from docenti,residenze where materia='Fisica' and regione='Piemonte')
+
+update residenze set citta=(select comune from admin.comuni where provincia='CN' and rownum=1)    /*errore: ORA-00001: unique constraint (BORRA.RESIDENZEDOC_PK) violated*/
+
 
 
 
