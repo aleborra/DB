@@ -231,6 +231,6 @@ update dati_amministrativi set incarico_aggiuntivo='Corso di  recupero di fisica
 
 update residenze set citta=(select comune from admin.comuni where provincia='CN' and rownum=1)    /*errore: ORA-00001: unique constraint (BORRA.RESIDENZEDOC_PK) violated*/
 
-
+delete from residenze where citta='JANova'
 
 
