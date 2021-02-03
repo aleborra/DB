@@ -220,3 +220,6 @@ update dati_amministrativi set tipo_contratto='indeterminato';
 update dati_amministrativi set stipendio= stipendio*1.1 where incarico_aggiuntivo != 'nessuno';
 
 update dati_amministrativi set anni_servizio=anni_servizio+1;
+
+select cognome,nome from docenti where nome like 'MARIA%'
+
