@@ -221,7 +221,7 @@ update dati_amministrativi set stipendio= stipendio*1.1 where incarico_aggiuntiv
 
 update dati_amministrativi set anni_servizio=anni_servizio+1;
 
-select cognome,nome from docenti where nome like 'MARIA%'
+select cognome,nome from docenti where nome like '%MARIA%'
 
 update dati_amministrativi set incarico_aggiuntivo='Primo collaboratore' 
 where dati_amministrativi.id in (select docenti.id from docenti,dati_amministrativi where cognome='AMATO')
