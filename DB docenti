@@ -223,9 +223,8 @@ update dati_amministrativi set anni_servizio=anni_servizio+1;
 
 select cognome,nome from docenti where nome like '%MARIA%'
 
-update dati_amministrativi set incarico_aggiuntivo='Primo collaboratore' 
+update dati_amministrativi set incarico_aggiuntivo='Primo collaboratore', stipendio=stipendio+100 
 where dati_amministrativi.id in (select docenti.id from docenti,dati_amministrativi where cognome='AMATO')
-update dati_amministrativi set stipendio=stipendio+100 where dati_amministrativi.id in (select docenti.id from docenti,dati_amministrativi where cognome='AMATO')
 
 update dati_amministrativi set incarico_aggiuntivo='Corso di  recupero di fisica' where id in (select id from docenti,residenze where materia='Fisica' and regione='Piemonte')
 
