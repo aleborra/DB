@@ -24,3 +24,7 @@ create table prenotazione (codice_pren number(5,0) not null,
 insert into paziente values(1,'Baudo','Pippo','via delle primule','Bra',1686713427)
 insert into paziente values(2,'Badoglio','Giuseppe','corso del monastero','Alba',8882823665)
 insert into paziente values(3,'Filippico','Giangi','via Diaz','Torino',3501354797)
+
+insert into sede values(4,'Bra','Giorgione')
+insert into sede values(5,'Alba','Ignazio')
+insert into sede values(6,'Torino','Umbertoldo')
