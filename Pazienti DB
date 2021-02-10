@@ -46,3 +46,6 @@ update prenotazione set prezzo=prezzo-20
 where codice_paz=(select codice from paziente where citta='Alba') 
 and codsede=(select codice_sede from sede where citta='Alba')
 
+delete from prenotazione where codice_paz=(select codice from paziente 
+    where cognome='Filippico' and nome='Giangi')
+delete from paziente where cognome='Filippico' and nome='Giangi'
