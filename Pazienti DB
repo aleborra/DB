@@ -14,12 +14,14 @@ create table sede (codice_sede number(5,0) not null,
 create table prenotazione (codice_pren number(5,0) not null,
     				   	   tipo_prestazione varchar2(100) not null,
     					   data_preontazione date not null,
-    					   ora number(*,0) not null,
+    					   ora timestamp with local time zone not null,
     					   codice_paz number(5,0) not null,
     					   codsede number(5,0) not null,
 					   	   primary key (codice_pren),
 						   foreign key (codice_paz) references paziente(codice),
 						   foreign key (codsede) references sede(codice_sede))
+						
+alter table prenotazione drop column ora						
 
 insert into paziente values(1,'Baudo','Pippo','via delle primule','Bra',1686713427)
 insert into paziente values(2,'Badoglio','Giuseppe','corso del monastero','Alba',8882823665)
