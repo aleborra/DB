@@ -20,3 +20,7 @@ create table prenotazione (codice_pren number(5,0) not null,
 					   	   primary key (codice_pren),
 						   foreign key (codice_paz) references paziente(codice),
 						   foreign key (codsede) references sede(codice_sede))
+
+insert into paziente values(1,'Baudo','Pippo','via delle primule','Bra',1686713427)
+insert into paziente values(2,'Badoglio','Giuseppe','corso del monastero','Alba',8882823665)
+insert into paziente values(3,'Filippico','Giangi','via Diaz','Torino',3501354797)
