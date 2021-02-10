@@ -13,8 +13,8 @@ create table sede (codice_sede number(5,0) not null,
 					   
 create table prenotazione (codice_pren number(5,0) not null,
     				   	   tipo_prestazione varchar2(100) not null,
-    					   data_preontazione date not null,
-    					   ora timestamp with local time zone not null,
+    					   data_prenotazione date not null,
+    					   ora number(4,2),
     					   codice_paz number(5,0) not null,
     					   codsede number(5,0) not null,
 					   	   primary key (codice_pren),
@@ -31,4 +31,13 @@ insert into sede values(4,'Bra','Giorgione')
 insert into sede values(5,'Alba','Ignazio')
 insert into sede values(6,'Torino','Umbertoldo')
 
-insert into prenotazione values(7,'radiografie','05-JAN-2020','13',2,4)
+insert into prenotazione values(7,'radiografie','05-JAN-2020','13.50',2,4)
+insert into prenotazione values(8,'urgente','14-JUN-2020','17.30',1,6)
+insert into prenotazione values(9,'radiografia','10-MAY-2019','9.45',3,5)
+
+alter table prenotazione add prezzo number(5,2)
+
+update prenotazione set prezzo=0 where tipo_prestazione='urgente'
+
+update prenotazione set prezzo=40 where tipo_prestazione='radiografia' 
+and codice_pren=(select codice_sede from sede where citta='Bra')
