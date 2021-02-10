@@ -40,4 +40,9 @@ alter table prenotazione add prezzo number(5,2)
 update prenotazione set prezzo=0 where tipo_prestazione='urgente'
 
 update prenotazione set prezzo=40 where tipo_prestazione='radiografia' 
-and codice_pren=(select codice_sede from sede where citta='Bra')
+and codsede=(select codice_sede from sede where citta='Bra')
+
+update prenotazione set prezzo=prezzo-20 
+where codice_paz=(select codice from paziente where citta='Alba') 
+and codsede=(select codice_sede from sede where citta='Alba')
+
