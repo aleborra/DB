@@ -30,3 +30,5 @@ insert into paziente values(3,'Filippico','Giangi','via Diaz','Torino',350135479
 insert into sede values(4,'Bra','Giorgione')
 insert into sede values(5,'Alba','Ignazio')
 insert into sede values(6,'Torino','Umbertoldo')
+
+insert into prenotazione values(7,'radiografie','05-JAN-2020','13',2,4)
