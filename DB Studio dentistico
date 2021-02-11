@@ -138,3 +138,16 @@ Insert into PAZIENTI (CODICE_PAZIENTE,COGNOME,NOME,DATA_NASCITA,CITTA_NASCITA) v
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "DATA"  ENABLE;
+
+
+alter table pazienti add note varchar2(100)
+
+update pazienti set note='Da contattare' where cognome='Corino'
+
+update interventi set prezzo=prezzo+1.1
+
+update interventi set durata=durata+0.15
+
+update cartelle set pagato='true' where codice_paziente=(select codice_paziente from pazienti where cognome='Amato' and nome='Concettina')
+
+/*da fare la 6*/
