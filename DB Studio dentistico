@@ -150,4 +150,10 @@ update interventi set durata=durata+0.15
 
 update cartelle set pagato='true' where codice_paziente=(select codice_paziente from pazienti where cognome='Amato' and nome='Concettina')
 
-/*da fare la 6*/
+update cartelle set data='10-SEP-11', ora=17 where cartelle.codice_intervento=codice_intervento
+and codice_paziente=(select codice_paziente from pazienti where cognome='Patriaca' and nome='Lara')
+
+insert into pazienti (pazienti.codice_paziente,pazienti.cognome,pazienti.nome,pazienti.data_nascita,pazienti.citta_nascita) 
+select proprietari.codproprietario,proprietari.cognome,proprietari.nome,proprietari.data_di_nascita,proprietari.citta from proprietari
+
+delete from pazienti where cognome='MADONIA' and nome='ROSANNA'
