@@ -1,0 +1,3 @@
+alter table fumetti drop column data_uscita      /*eliminazione*/
+
+alter table fumetti modify costo float      /*modifica da integer a float*/
