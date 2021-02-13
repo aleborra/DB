@@ -1,0 +1,1 @@
+alter table fumetti drop column data_uscita
