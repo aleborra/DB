@@ -157,3 +157,5 @@ insert into pazienti (pazienti.codice_paziente,pazienti.cognome,pazienti.nome,pa
 select proprietari.codproprietario,proprietari.cognome,proprietari.nome,proprietari.data_di_nascita,proprietari.citta from proprietari
 
 delete from pazienti where cognome='MADONIA' and nome='ROSANNA'
+
+update interventi set prezzo= prezzo + 150, durata= durata + 0.2 where descrizione = 'Ricostruzione'
