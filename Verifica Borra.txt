@@ -1,0 +1,53 @@
+1)	create table citta (citta varchar2(100) not null,
+				    provincia varchar2(100) not null,
+					regione varchar2(100) not null,
+					primary key (citta))
+
+
+	create table proprietario (codice_fiscale varchar(100) not null,
+						   cognome varchar2(100) not null,
+						   nome varchar2(100) not null,
+						   indirizzo varchar2(150) not null,
+						   citta varchar2(100) not null,
+						   primary key (codice_fiscale),
+						   foreign key (citta) references citta(citta))
+
+
+	create table automobile (targa varchar2(100) not null,
+						 marca varchar2(100) not null,
+						 modello varchar2(100) not null,
+						 cilindrata number(*,0) not null,
+						 alimentazione varchar2(100) not null,
+						 codice_fiscale_prop varchar2(100) not null,
+						 primary key (targa),
+						 foreign key (codice_fiscale_prop) references proprietario(codice_fiscale))
+
+2)	insert into citta values('Alba','CN','Piemonte')
+	insert into citta values('Savona','SV','Liguria')
+	insert into citta values('Torino','TO','Piemonte')
+	
+	insert into proprietario values('RFGVNN51D15G459P','Rovagnati','Sergio','via delle primule','Alba')
+	insert into proprietario values('SCRGSP25F48P397S','Scipioni','Luigi','corso lunatico','Torino')
+	insert into proprietario values('ZCCRCC53G17L682T','Zaccaria','Aldo','piazza GC','Alba')
+
+	insert into automobile values('BR990XH','Fiat','Panda','0.8','Diesel','ZCCRCC53G17L682T')
+	insert into automobile values('BG800BS','Porche','911','1.2','GPL','RFGVNN51D15G459P')
+	insert into automobile values('DC324LP','Jeep','Renegade','1','Diesel','SCRGSP25F48P397S')
+
+3)	alter table automobile add autorizzazioni varchar2(100) default 'no'
+
+4)	update automobile set autorizzazioni='si' where alimentazione='GPL'
+
+5)	update automobile set autorizzazioni='no' where alimentazione='Diesel' 
+	and codice_fiscale_prop in (select codice_fiscale from proprietario 
+    	where citta='Alba')
+
+6)	update automobile set autorizzazioni='si' where alimentazione='Benzina' and codice_fiscale_prop in (select codice_fiscale from proprietario 
+    	where provincia='CN')
+
+7)	delete from automobile where modello='Panda' and  codice_fiscale_prop='ZCCRCC53G17L682T'
+
+
+
+
+
